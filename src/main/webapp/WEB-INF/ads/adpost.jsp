@@ -67,7 +67,7 @@
 
     <div class="product-image">
 
-        <img src="../../img/Cheese_Bowl.png" alt="Cheese">
+        <img src="IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/Cheese_Bowl.png" alt="Cheese">
 
         <!-- 	product Information-->
         <div class="info">

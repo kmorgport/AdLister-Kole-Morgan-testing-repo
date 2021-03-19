@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="/WEB-INF/partials/head.jsp">
+<jsp:include page="WEB-INF/partials/head.jsp">
     <jsp:param name="title" value="Please Log In" />
 </jsp:include>
 
@@ -327,9 +327,10 @@
 </footer>
 
 <!-- Bootstrap core JavaScript -->
-<jsp:include page="/WEB-INF/partials/script.jsp">
-    <jsp:param name="title" value="Please Log In" />
-</jsp:include>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.slim.js"
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

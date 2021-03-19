@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -40,6 +41,11 @@ public class MySQLAdsDao implements Ads{
         return null;
     }
 
+    @Override
+    public Long insert(Ad ad) {
+        return null;
+    }
+
     private List<Ad> generateAds(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while(rs.next()){
@@ -54,11 +60,6 @@ public class MySQLAdsDao implements Ads{
         return ads;
     }
 
-
-    @Override
-    public Long insert(Ad ad) {
-        return null;
-    }
 
 //    @Override
 //    public List<Ad> findAdsByCategory(String category) {
@@ -85,19 +86,19 @@ public class MySQLAdsDao implements Ads{
 //        return null;
 //    }
 
-@Override
-public List<Ad> findAdsByCategory(String category) {
-    PreparedStatement stmt = null;
-    String insertQuery = "SELECT * FROM ads a JOIN ad_categories ac ON a.id = ac.ad_id JOIN categories c on ac.category_id = c.id WHERE c.name = ?";
-    try{
-        stmt = connection.prepareStatement(insertQuery);
-        stmt.setString(1,category);
-        ResultSet rs = stmt.executeQuery();
-        return createAdsFromResults(rs);
-    } catch (SQLException e) {
-        throw new RuntimeException("Error retrieving all ads.", e);
+    @Override
+    public List<Ad> findAdsByCategory(String category) {
+        PreparedStatement stmt = null;
+        String insertQuery = "SELECT * FROM ads a JOIN ad_categories ac ON a.id = ac.ad_id JOIN categories c on ac.category_id = c.id WHERE c.name = ?";
+        try{
+            stmt = connection.prepareStatement(insertQuery);
+            stmt.setString(1,category);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
     }
-}
 
     public List<Ad> getAdsByUserId(long id) {
         PreparedStatement stmt = null;

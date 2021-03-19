@@ -1,8 +1,14 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.User;
+import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.cj.jdbc.Driver;
+//import models.User;
 
 public class MySQLUsersDao implements  Users{
     private Connection connection = null;
@@ -44,9 +50,4 @@ public class MySQLUsersDao implements  Users{
         return null;
     }
 
-
-    @Override
-    public Long insert(User user) {
-        return null;
-    }
 }
