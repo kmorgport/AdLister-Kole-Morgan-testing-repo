@@ -177,14 +177,14 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Welcome back!</h3>
-              <form>
+              <form action="/login" method="POST">
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
+                  <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                  <label for="username"></label>
                 </div>
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                  <label for="inputPassword">Password</label>
+                  <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                  <label for="password"></label>
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">

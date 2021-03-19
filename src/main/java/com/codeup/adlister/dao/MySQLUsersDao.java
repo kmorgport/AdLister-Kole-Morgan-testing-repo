@@ -24,30 +24,42 @@ public class MySQLUsersDao implements  Users{
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
+
     @Override
     public User findByUserName(String username) {
-        String query = "SELECT * FROM users where username = ? LIMIT 1";
+        PreparedStatement stmt = null;
+        String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
         try{
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1,username);
-            stmt.executeQuery();
-            ResultSet rs = stmt.getGeneratedKeys();
+            stmt = connection.prepareStatement(query);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
             rs.next();
             return new User(
                     rs.getLong("id"),
-                    rs.getString("Username"),
+                    rs.getString("username"),
                     rs.getString("email"),
                     rs.getString("password")
             );
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding user by username", e);
         }
-        return null;
     }
 
     @Override
     public Long insert(User user) {
-        return null;
+        String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return rs.getLong(1);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating new user", e);
+        }
     }
 
     public User getUserByAd(long id) {
