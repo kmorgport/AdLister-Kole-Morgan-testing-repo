@@ -22,7 +22,7 @@ public class AdPostServlet extends HttpServlet {
 //
 //        long profileId = profile.getId();
 
-        request.setAttribute("ad", DaoFactory.getAdsDao().getAdsByAdId(1));
+        request.setAttribute("ads", DaoFactory.getAdsDao().getAdsByAdId(1));
         request.getRequestDispatcher("/WEB-INF/ads/adpost.jsp").forward(request, response);
     }
 }

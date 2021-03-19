@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Classroom
@@ -17,11 +18,12 @@
 
 
     <!-- Start	Product details -->
+<c:forEach var="ad" items="${ads}">
     <div class="product-details">
 
         <!-- 	Product Name -->
 <%--        <h1>Mammoth Cheese</h1>--%>
-        <h1>${ad.getTitle}</h1>
+        <h1>${ad.getTitle()}</h1>
         <!-- 		<span class="hint new">New</span> -->
         <!-- 		<span class="hint free-shipping">Free Shipping</span> -->
         <!-- 		the Product rating -->
@@ -79,6 +81,7 @@
             </ul>
         </div>
     </div>
+</c:forEach>
     <!--  End product image  -->
 
 
