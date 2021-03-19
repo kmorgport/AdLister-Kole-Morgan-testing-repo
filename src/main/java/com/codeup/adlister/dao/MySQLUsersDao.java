@@ -50,4 +50,22 @@ public class MySQLUsersDao implements  Users{
         return null;
     }
 
+    public User getUserByAd(long id) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM users u JOIN ads a ON a.user_id = a.id WHERE a.id = ?");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return new User(
+                    rs.getLong("id"),
+                    rs.getString("username"),
+                    rs.getString("email"),
+                    rs.getString("password")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding user.", e);
+        }
+    }
+
 }

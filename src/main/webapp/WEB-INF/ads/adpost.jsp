@@ -53,8 +53,11 @@
                 <span class="price">${ad.getPrice()}</span>
                 <!-- 		shopping cart icon-->
                 <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                </c:forEach>
                 <!-- 		Buy Now / ADD to Cart-->
-                <span class="buy">EMAIL</span>
+                <c:forEach var="user" items="${users}">
+                <span class="buy">${user.getEmail()}</span>
+                </c:forEach>
             </button>
             <!-- End Button buying -->
 
@@ -81,7 +84,6 @@
             </ul>
         </div>
     </div>
-</c:forEach>
     <!--  End product image  -->
 
 
