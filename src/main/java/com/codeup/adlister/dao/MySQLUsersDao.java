@@ -46,7 +46,7 @@ public class MySQLUsersDao implements  Users{
     }
 
     @Override
-    public Long insert(User user) {
+    public boolean insert(User user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -56,9 +56,10 @@ public class MySQLUsersDao implements  Users{
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
-            return rs.getLong(1);
+            return true;
         } catch (SQLException e) {
-            throw new RuntimeException("Error creating new user", e);
+            return false;
+//            throw new RuntimeException("Error creating new user", e);
         }
     }
 

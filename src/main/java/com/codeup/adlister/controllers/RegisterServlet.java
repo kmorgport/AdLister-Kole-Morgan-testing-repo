@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 @WebServlet(name = "com.codeup.adlister.controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -14,6 +15,7 @@ public class RegisterServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ads/register.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -29,8 +31,12 @@ public class RegisterServlet extends HttpServlet {
         }
         // create and save a new user
         User user = new User(username, email, password);
-        DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
+        if(DaoFactory.getUsersDao().insert(user)){
+            response.sendRedirect("/login");
+        }else{
+            session.setAttribute("error", "Sorry, someone already has that username or email. Please try again." );
+            response.sendRedirect("/register");
+        }
     }
 }
 
