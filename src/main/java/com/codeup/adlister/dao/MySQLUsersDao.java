@@ -1,0 +1,52 @@
+package com.codeup.adlister.dao;
+
+import com.codeup.adlister.models.User;
+
+import java.sql.*;
+
+public class MySQLUsersDao implements  Users{
+    private Connection connection = null;
+    public MySQLUsersDao(Config config){
+        try{
+            DriverManager.registerDriver(new Driver());
+            connection = DriverManager.getConnection(
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error connecting to the database!", e);
+        }
+    }
+    @Override
+    public User findByUserName(String username) {
+        String query = "SELECT * FROM users where username = ? LIMIT 1";
+        try{
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1,username);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return new User(
+                    rs.getLong("id"),
+                    rs.getString("Username"),
+                    rs.getString("email"),
+                    rs.getString("password")
+            );
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Long insert(User user) {
+        return null;
+    }
+
+
+    @Override
+    public Long insert(User user) {
+        return null;
+    }
+}
