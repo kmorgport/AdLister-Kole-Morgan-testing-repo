@@ -13,5 +13,5 @@ public interface Ads {
 
     List<Ad> findAdsByCategory(String category);
     public List<Ad> getAdsByUserId(long id);
-    public List<Ad> getAdsByAdId(long id);
+    public Ad getAdsByAdId(long id);
 }

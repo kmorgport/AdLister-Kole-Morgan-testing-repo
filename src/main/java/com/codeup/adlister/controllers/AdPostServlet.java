@@ -26,10 +26,10 @@ public class AdPostServlet extends HttpServlet {
 //        long profileId = profile.getId();
 
         long adId = Long.parseLong(request.getParameter("adId"));
-        List<Ad> ads = DaoFactory.getAdsDao().getAdsByAdId(adId);
-        User users = DaoFactory.getUsersDao().getUserByAd(adId);
-        request.setAttribute("ads", ads);
-        request.setAttribute("users", users);
+        Ad ad = DaoFactory.getAdsDao().getAdsByAdId(adId);
+        User user = DaoFactory.getUsersDao().getUserByAd(adId);
+        request.setAttribute("ads", ad);
+        request.setAttribute("users", user);
         request.getRequestDispatcher("/WEB-INF/ads/adpost.jsp").forward(request, response);
     }
 }

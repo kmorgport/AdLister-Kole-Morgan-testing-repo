@@ -109,6 +109,7 @@
                                 <%--                            <div class="card-footer">--%>
                                 <%--                                <input class="inp" type="button" value="View Post" onclick="location.href='AdminPage.jsp';" />--%>
                                 <%--                            </div>--%>
+                            </a>
                         </div>
                     </div>
                     <%--                    <div class="col-md-6">--%>

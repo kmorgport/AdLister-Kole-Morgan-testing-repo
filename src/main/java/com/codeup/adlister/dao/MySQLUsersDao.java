@@ -53,7 +53,7 @@ public class MySQLUsersDao implements  Users{
     public User getUserByAd(long id) {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM users u JOIN ads a ON a.user_id = a.id WHERE a.id = ?");
+            stmt = connection.prepareStatement("SELECT * FROM users u JOIN ads a ON a.user_id = u.id WHERE a.id = ?");
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             rs.next();

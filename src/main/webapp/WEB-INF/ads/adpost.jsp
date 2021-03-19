@@ -18,12 +18,11 @@
 
 
     <!-- Start	Product details -->
-<c:forEach var="ad" items="${ads}">
     <div class="product-details">
 
         <!-- 	Product Name -->
 <%--        <h1>Mammoth Cheese</h1>--%>
-        <h1>${ad.getTitle()}</h1>
+        <h1><c:out value="${ad.getTitle()}"/></h1>
         <!-- 		<span class="hint new">New</span> -->
         <!-- 		<span class="hint free-shipping">Free Shipping</span> -->
         <!-- 		the Product rating -->
@@ -40,7 +39,7 @@
 <%--        <p class="information">"In some camps, mammoth cheese sacks have a flap of hide stitched over them, which--%>
 <%--            prevents the cheese from being harvested by the Dragonborn. Having the Green Thumb Alchemy perk allows for--%>
 <%--            the collection of two bowls of mammoth cheese per sack."</p>--%>
-        <p class="information">${ad.getDescription()}</p>
+        <p class="information"><c:out value="${ad.getDescription()}"/></p>
 
 
         <!-- 		Control -->
@@ -50,14 +49,14 @@
             <button class="btn">
                 <!-- 		the Price -->
 <%--                <span class="price">$49</span>--%>
-                <span class="price">${ad.getPrice()}</span>
+                <span class="price"><c:out value="${ad.getPrice()}"/></span>
                 <!-- 		shopping cart icon-->
                 <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                </c:forEach>
                 <!-- 		Buy Now / ADD to Cart-->
-                <c:forEach var="user" items="${users}">
-                <span class="buy">${user.getEmail()}</span>
-                </c:forEach>
+<%--                <c:forEach var="user" items="${users}">--%>
+                <span class="buy"><c:out value="${user.getEmail()}"/></span>
+<%--                <span class="buy">${user.getEmail()}</span>--%>
+<%--                </c:forEach>--%>
             </button>
             <!-- End Button buying -->
 
@@ -72,7 +71,7 @@
 
     <div class="product-image">
 
-        <img src="IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/Cheese_Bowl.png" alt="Cheese">
+<%--        <img src="IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/Cheese_Bowl.png" alt="Cheese">--%>
 
         <!-- 	product Information-->
         <div class="info">
