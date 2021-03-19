@@ -11,13 +11,15 @@ public class User {
 
     public User() {}
 
+    //constructor used when pulling from SQL
     public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
     }
 
+    //constructor used when new user is signing up
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
