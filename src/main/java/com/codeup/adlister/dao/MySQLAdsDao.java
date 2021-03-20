@@ -42,8 +42,18 @@ public class MySQLAdsDao implements Ads{
     }
 
     @Override
-    public Long insert(Ad ad) {
-        return null;
+    public void insert(Ad ad) {
+        try {
+            String insertQuery = "INSERT INTO ads(user_id, title, price, description) VALUES (?, ?, ?, ?)";
+            PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad.getUserId());
+            stmt.setString(2, ad.getTitle());
+            stmt.setDouble(3, ad.getPrice());
+            stmt.setString(4, ad.getDescription());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error creating a new ad.", e);
+        }
     }
 
     private List<Ad> generateAds(ResultSet rs) throws SQLException {
@@ -125,6 +135,21 @@ public class MySQLAdsDao implements Ads{
 //            throw new RuntimeException("Error retrieving all ads.", e);
 //        }
 //    }
+public long getAdIdByAttributes(long userId, String title, Double price, String description) {
+    try {
+        String query = "SELECT id FROM ads WHERE user_id = ? AND title = ? AND price = ? AND description = ?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setLong(1, userId);
+        stmt.setString(2, title);
+        stmt.setDouble(3, price);
+        stmt.setString(4, description);
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        return rs.getLong("id");
+    } catch (SQLException e) {
+        throw new RuntimeException("No ad found with selected attributes.", e);
+    }
+}
 
     public Ad getAdsByAdId(long id) {
         PreparedStatement stmt = null;
@@ -143,6 +168,11 @@ public class MySQLAdsDao implements Ads{
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving the ad.", e);
         }
+    }
+
+    @Override
+    public void insert(long adId, long categoryId) {
+
     }
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {

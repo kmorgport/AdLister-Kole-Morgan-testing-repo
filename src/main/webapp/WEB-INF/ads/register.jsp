@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,6 +9,11 @@
 <body>
 <div class="container">
     <h1>Please fill in your information.</h1>
+    <c:if test="${error != null}">
+        <div class="alert alert-danger" role="alert">
+            Error: ${error}
+        </div>
+    </c:if>
     <form action="/register" method="post">
         <div class="form-group">
             <label for="username">Username</label>

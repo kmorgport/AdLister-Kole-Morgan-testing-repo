@@ -9,9 +9,13 @@ public interface Ads {
     // get a list of all the ads
     List<Ad> all();
     // insert a new ad and return the new ad's id
-    Long insert(Ad ad);
+    void insert(Ad ad);
 
     List<Ad> findAdsByCategory(String category);
     public List<Ad> getAdsByUserId(long id);
     public Ad getAdsByAdId(long id);
+
+    void insert(long adId, long categoryId);
+
+    public long getAdIdByAttributes(long userId, String title, Double price, String description);
 }
