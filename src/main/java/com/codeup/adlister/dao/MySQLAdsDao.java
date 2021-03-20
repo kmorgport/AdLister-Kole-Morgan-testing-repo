@@ -110,6 +110,32 @@ public class MySQLAdsDao implements Ads{
         }
     }
 
+    @Override
+    public void delete(long adId) {
+        String query = "DELETE FROM ads WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad", e);
+        }
+    }
+
+    public List<Ad> findAdsBySearch(String userInput) {
+        PreparedStatement stmt = null;
+        String insertQuery = "SELECT * FROM ads WHERE title Like ?";
+        try{
+            stmt = connection.prepareStatement(insertQuery);
+            String title = "%"+userInput+"%";
+            stmt.setString(1,title);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
     public List<Ad> getAdsByUserId(long id) {
         PreparedStatement stmt = null;
         String insertQuery = "SELECT * FROM ads WHERE user_id = ?";

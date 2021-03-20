@@ -19,4 +19,6 @@ public interface Ads {
 
     public long getAdIdByAttributes(long userId, String title, Double price, String description);
     public void updateAd(long id, String title, Double price, String description);
+    public List<Ad> findAdsBySearch(String userInput);
+    public void delete(long adId);
 }

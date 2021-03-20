@@ -10,28 +10,24 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebServlet(name = "com.codeup.adlister.controllers.DeleteServlet", urlPatterns = "/delete")
 public class DeleteServlet extends HttpServlet {
+    private long adId;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null){
-            request.getRequestDispatcher("/WEB-INF/ads/edit.jsp")
+            request.getRequestDispatcher("/WEB-INF/ads/delete.jsp")
                     .forward(request, response);
         } else {
             response.sendRedirect("/login");
         }
+        adId = Long.parseLong(request.getParameter("adId"));
+        Ad ad = DaoFactory.getAdsDao().getAdsByAdId(adId);
+        User userPost = DaoFactory.getUsersDao().getUserByAd(adId);
+        request.setAttribute("ad", ad);
+        request.setAttribute("user", userPost);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                user.getId(),
-                Double.parseDouble(request.getParameter("price")),
-                request.getParameter("title"),
-                request.getParameter("description")
-        );
-        DaoFactory.getAdsDao().insert(ad);
-        long adId = DaoFactory.getAdsDao().getAdIdByAttributes(
-                user.getId(), request.getParameter("title"),
-                Double.parseDouble(request.getParameter("price")),
-                request.getParameter("description"));
+        System.out.println(adId);
+        DaoFactory.getAdsDao().delete(adId);
         response.sendRedirect("/profile");
     }
 }
