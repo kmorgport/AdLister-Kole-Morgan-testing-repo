@@ -37,8 +37,6 @@ public class CreateServlet extends HttpServlet {
         for (String category : categories) {
             long categoryId = Long.parseLong(category);
             DaoFactory.getCategoriesDao().insert(adId, categoryId);
-            System.out.println(adId);
-            System.out.println(categoryId);
         }
         response.sendRedirect("/landing");
     }

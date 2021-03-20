@@ -100,7 +100,7 @@
                 <c:forEach var="ad" items="${ads}">
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="#"></a>
+                            <a href="/edit?adId=${ad.getId()}">
                             <div class="card-body">
                                 <h4 class="card-title">${ad.getTitle()}</h4>
                                 <h5>${ad.getPrice()}</h5>
