@@ -2,6 +2,8 @@ package com.codeup.adlister.dao;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //technically a Dao for the join table which combines the Categories table and the Ads Table
 public class MySQLCategoriesDao implements Categories{
@@ -31,6 +33,44 @@ public class MySQLCategoriesDao implements Categories{
             stat.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException("Error connecting to database.",e);
+        }
+    }
+
+    public int[] getAdCategories(long adId) {
+        int[] categories = {0, 0, 0, 0, 0, 0, 0};
+        List<Long> catIds = new ArrayList<>();
+        try {
+            String query = "SELECT category_id FROM ad_categories WHERE ad_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                catIds.add(rs.getLong("category_id"));
+            }
+            if (catIds.contains(1L)) {
+                categories[0] = 1;
+            }
+            if (catIds.contains(2L)) {
+                categories[1] = 1;
+            }
+            if (catIds.contains(3L)) {
+                categories[2] = 1;
+            }
+            if (catIds.contains(4L)) {
+                categories[3] = 1;
+            }
+            if (catIds.contains(5L)) {
+                categories[4] = 1;
+            }
+            if (catIds.contains(6L)) {
+                categories[5] = 1;
+            }
+            if (catIds.contains(7L)) {
+                categories[6] = 1;
+            }
+            return categories;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error getting ad categories", e);
         }
     }
 }
