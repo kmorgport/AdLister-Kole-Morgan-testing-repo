@@ -6,4 +6,5 @@ public interface Categories {
 
     void insert(long adId, long categoryId);
     public int[] getAdCategories(long adId);
+    public void delete(long adId);
 }

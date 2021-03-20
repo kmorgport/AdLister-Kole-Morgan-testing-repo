@@ -73,4 +73,16 @@ public class MySQLCategoriesDao implements Categories{
             throw new RuntimeException("Error getting ad categories", e);
         }
     }
+
+    @Override
+    public void delete(long adId) {
+        String query = "DELETE FROM ad_categories WHERE ad_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting category to update", e);
+        }
+    }
 }

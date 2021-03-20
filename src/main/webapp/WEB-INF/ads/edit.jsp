@@ -12,7 +12,7 @@
     <title>$Title$</title>
 </head>
 <body>
-<form action="/create" method="POST">
+<form action="/edit" method="POST">
     <div class="form-label-group">
         <input type="text" id="title" name="title" class="form-control" placeholder="Title" required>
         <label for="title">Your previous Title: <c:out value="${ad.getTitle()}"/></label>
@@ -97,7 +97,10 @@
         <label for="description">Description: </label>
         <textarea rows="3" cols="30" name="description" id="description"><c:out value="${ad.getDescription()}"/></textarea>
     </div>
-    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Submit</button>
+    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Edit</button>
+</form>
+<form action="/delete" method="POST">
+    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Delete</button>
 </form>
 </body>
 </html>

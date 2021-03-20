@@ -18,4 +18,5 @@ public interface Ads {
     void insert(long adId, long categoryId);
 
     public long getAdIdByAttributes(long userId, String title, Double price, String description);
+    public void updateAd(long id, String title, Double price, String description);
 }

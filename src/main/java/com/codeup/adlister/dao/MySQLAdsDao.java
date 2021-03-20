@@ -175,6 +175,21 @@ public long getAdIdByAttributes(long userId, String title, Double price, String 
 
     }
 
+    @Override
+    public void updateAd(long id, String title, Double price, String description) {
+        String query = "UPDATE ads SET title = ?, price = ?, description = ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, title);
+            stmt.setDouble(2, price);
+            stmt.setString(3, description);
+            stmt.setLong(4, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating ad.", e);
+        }
+    }
+
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {
