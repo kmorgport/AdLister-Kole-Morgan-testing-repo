@@ -40,6 +40,11 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
+            <form action="/landing" method="post">
+                <label for="search">First Name:</label>
+                <input type="text" name="search" id="search">
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
 </nav>

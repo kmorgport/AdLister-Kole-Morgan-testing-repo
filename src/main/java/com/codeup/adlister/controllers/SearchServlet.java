@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "com.codeup.adlister.controllers.SearchServlet", urlPatterns = "/search")
@@ -16,8 +17,10 @@ public class SearchServlet extends HttpServlet {
 //            response.sendRedirect("/profile");
 //            return;
 //        }
-        String input = request.getParameter("search");
+        HttpSession session = request.getSession();
+        String input = (String) session.getAttribute("search");
         request.setAttribute("ads", DaoFactory.getAdsDao().findAdsBySearch(input));
         request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
+        session.removeAttribute("search");
     }
 }

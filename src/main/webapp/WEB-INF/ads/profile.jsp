@@ -100,15 +100,15 @@
                 <c:forEach var="ad" items="${ads}">
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
-                            <a href="/edit?adId=${ad.getId()}">
-                            <div class="card-body">
-                                <h4 class="card-title">${ad.getTitle()}</h4>
-                                <h5>${ad.getPrice()}</h5>
-                                <p class="card-text">${ad.getDescription()}</p>
-                            </div>
-                                <%--                            <div class="card-footer">--%>
-                                <%--                                <input class="inp" type="button" value="View Post" onclick="location.href='AdminPage.jsp';" />--%>
-                                <%--                            </div>--%>
+                            <a href="/edit-delete?adId=${ad.getId()}">
+                                <div class="card-body">
+                                    <h4 class="card-title">${ad.getTitle()}</h4>
+                                    <h5>${ad.getPrice()}</h5>
+                                    <p class="card-text">${ad.getDescription()}</p>
+                                </div>
+                                    <%--                            <div class="card-footer">--%>
+                                    <%--                                <input class="inp" type="button" value="View Post" onclick="location.href='AdminPage.jsp';" />--%>
+                                    <%--                            </div>--%>
                         </div>
                     </div>
                     <%--                    <div class="col-md-6">--%>

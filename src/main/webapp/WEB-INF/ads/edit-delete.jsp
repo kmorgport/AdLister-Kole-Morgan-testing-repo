@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: Classroom
-  Date: 3/18/21
-  Time: 4:33 PM
+  User: ionbenz
+  Date: 3/21/21
+  Time: 01:30
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -51,9 +51,6 @@
                 <%--                <span class="price">$49</span>--%>
                 <span class="price"><c:out value="${ad.getPrice()}"/></span>
                 <!-- 		shopping cart icon-->
-                <!-- 		Buy Now / ADD to Cart-->
-                <%--                <c:forEach var="user" items="${users}">--%>
-
                 <%--                <span class="buy">${user.getEmail()}</span>--%>
                 <%--                </c:forEach>--%>
             </button>
@@ -65,10 +62,7 @@
 
     <!-- 	End	Product details   -->
 
-    <form action="/delete" method="POST">
-        <label for="delete">Clicking this button will delete this ad. Warning: If you delete your ad, it can't be undone!</label>
-        <input type="submit" id="delete" value="Delete this ad" />
-    </form>
+
     <!-- 	Start product image & Information -->
 
     <div class="product-image">
@@ -89,5 +83,7 @@
 
 
 </div>
+<a href="/edit?adId=${ad.getId()}" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Edit this ad</a>
+<a href="/delete?adId=${ad.getId()}" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Delete this ad</a>
 </body>
 </html>

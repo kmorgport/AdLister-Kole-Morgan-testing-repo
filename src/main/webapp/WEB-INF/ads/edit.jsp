@@ -99,8 +99,5 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Edit</button>
 </form>
-<form method="POST">
-    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Delete</button>
-</form>
 </body>
 </html>
