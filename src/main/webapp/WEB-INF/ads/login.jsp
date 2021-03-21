@@ -7,20 +7,21 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Login</title>
-<!-- Bootstrap core CSS-->
+  <title>Login</title>
+  <!-- Bootstrap core CSS-->
   <jsp:include page="/WEB-INF/partials/loginPartial.jsp">
     <jsp:param name="title" value="Please Log In" />
   </jsp:include>
-  <link href="/vendor/bootstrap/login-css/bootstrap.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap/login-css/bootstrap.bundle.min.js" rel="stylesheet">
-  <link href="/vendor/bootstrap/login-css/jquery.slim.js" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<%--<link href="IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/WEB-INF/css/login.css" type="text/css" rel="stylesheet">--%>
+  <link href="${contextPath}/vendor/bootstrap/login-css/bootstrap.min.css" rel="stylesheet">
+  <link href="${contextPath}/vendor/bootstrap/login-css/bootstrap.bundle.min.js" rel="stylesheet">
+  <link href="${contextPath}/vendor/bootstrap/login-css/jquery.slim.js" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <%--<link href="IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/WEB-INF/css/login.css" type="text/css" rel="stylesheet">--%>
 </head>
 <body>
 <%--<style><%@include file="/vendor/bootstrap/login-css/bootstrap.min.css"%></style>--%>

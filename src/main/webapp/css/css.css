@@ -1,0 +1,61 @@
+body {
+  padding-top: 56px;
+  background-color: darkgreen;
+  background-image: url("/img/farm.jpeg");
+}
+
+nav {
+  opacity: 0.9;
+}
+
+.card {
+  border-radius: .35rem;
+  background-image: url('/img/bark.jpg');
+}
+
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+.foot {
+  margin-top: 50px;
+  opacity: 0.7;
+}
+
+.container {
+  border-radius: 3%;
+  opacity: 0.9;
+}
+
+.list-group {
+  border-radius: 20%;
+}
+
+.list-group-item {
+  background-image: url('/img/wood.jpg');
+  font-weight: bold;
+  color: black;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: large;
+}
+
+.farm-fresh {
+  background-image: url('/img/bark.jpg');
+  font-weight: bold;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.categories {
+  background-image: url('/img/bark.jpg');
+}
+
+.btn-text {
+  color: red;
+}
+
+.img {
+  /*display: block;*/
+  width: 900px;
+  height: 350px;
+}

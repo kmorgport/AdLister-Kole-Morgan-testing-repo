@@ -10,7 +10,7 @@ i {
 body {
     padding-top: 56px;
     background-color: darkgreen;
-    background-image: url("IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/farm.jpeg");
+    background-image: url("/img/farm.jpeg");
     margin-bottom: 300px;
 }
 
@@ -20,7 +20,7 @@ nav {
 
 .card {
     border-radius: .35rem;
-    background-image: url('IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/bark.jpg');
+    background-image: url("/img/bark.jpg");
 }
 
 .card:hover {
@@ -43,18 +43,18 @@ nav {
 }
 
 .list-group-item {
-    background-image: url('IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/wood.jpg');
+    background-image: url("/img/wood.jpg");
     font-weight: bold;
     color: white;
 }
 
 .farm-fresh {
-    background-image: url('IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/bark.jpg');
+    background-image: url("/img/bark.jpg");
     font-weight: bold;
 }
 
 .categories {
-    background-image: url('IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/bark.jpg');
+    background-image: url("/img/bark.jpg");
 }
 
 .btn-text {
