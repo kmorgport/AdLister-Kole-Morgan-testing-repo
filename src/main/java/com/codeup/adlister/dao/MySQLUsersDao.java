@@ -10,7 +10,7 @@ import java.util.List;
 import com.mysql.cj.jdbc.Driver;
 //import models.User;
 
-public class MySQLUsersDao implements  Users{
+public class MySQLUsersDao implements Users{
     private Connection connection = null;
     public MySQLUsersDao(Config config){
         try{
@@ -78,6 +78,21 @@ public class MySQLUsersDao implements  Users{
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error finding user.", e);
+        }
+    }
+
+
+    public void update(long id, String username, String email, String password) {
+        String query = "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, username);
+            stmt.setString(2, email);
+            stmt.setString(3, password);
+            stmt.setLong(4, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating user information.", e);
         }
     }
 

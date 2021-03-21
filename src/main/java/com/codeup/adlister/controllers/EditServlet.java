@@ -9,8 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 @WebServlet(name = "controllers.EditServlet", urlPatterns = "/edit")
 public class EditServlet extends HttpServlet {
@@ -34,8 +35,33 @@ public class EditServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession();
         User user = (User) request.getSession().getAttribute("user");
+        try {
+            Double.parseDouble(request.getParameter("price"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            session.setAttribute("errordouble", "Please enter a valid number for price field.");
+
+            Ad ad = DaoFactory.getAdsDao().getAdsByAdId(adId);
+            request.setAttribute("ad", ad);
+            int [] categories = DaoFactory.getCategoriesDao().getAdCategories(adId);
+            request.setAttribute("categories", categories);
+            request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
+        }
+        try {
+            String[] categories1 = request.getParameterValues("categories");
+            String result = categories1[0];
+        } catch (Exception e) {
+            session.setAttribute("error", "Please select at least one category.");
+            Ad ad = DaoFactory.getAdsDao().getAdsByAdId(adId);
+            request.setAttribute("ad", ad);
+            int [] categories = DaoFactory.getCategoriesDao().getAdCategories(adId);
+            request.setAttribute("categories", categories);
+            request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
+        }
+
         Ad ad = new Ad(
                 user.getId(),
                 Double.parseDouble(request.getParameter("price")),
@@ -49,6 +75,8 @@ public class EditServlet extends HttpServlet {
             long categoryId = Long.parseLong(category);
             DaoFactory.getCategoriesDao().insert(adId, categoryId);
         }
+        session.removeAttribute("error");
+        session.removeAttribute("errordouble");
         response.sendRedirect("/profile");
     }
 }
