@@ -22,7 +22,8 @@ public class ProfileServlet extends HttpServlet {
         }
 //
 //        long profileId = profile.getId();
-
+        User user = (User) request.getSession().getAttribute("user");
+        request.setAttribute("user",user);
         request.setAttribute("ads", DaoFactory.getAdsDao().getAdsByUserId(profile.getId()));
         request.getRequestDispatcher("/WEB-INF/ads/profile.jsp").forward(request, response);
     }
