@@ -10,7 +10,6 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +23,7 @@
     <!-- Bootstrap core CSS -->
     <link href="${contextPath}/vendor/bootstrap/login-css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-<%--    <link href="css.css" rel="stylesheet">--%>
+    <%--    <link href="css.css" rel="stylesheet">--%>
 </head>
 <body>
 <style><%@include file="/css/css.css"%></style>
@@ -60,7 +59,6 @@
         </div>
     </div>
 </nav>
-
 <!-- Page Content -->
 <div class="container w3-green">
     <div class="row">
@@ -78,7 +76,6 @@
             </div>
         </div>
         <!-- /.col-lg-3 -->
-
         <!--carousel-->
         <div class="col-lg-9">
             <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -123,7 +120,7 @@
                             <a href="/adpost?adId=${ad.getId()}">
                                 <div class="card-body">
                                     <h4 class="card-title">${ad.getTitle()}</h4>
-                                    <h5>${ad.getPrice()}</h5>
+                                    <h5>$${df.format(ad.getPrice())}</h5>
                                     <p class="card-text">${ad.getDescription()}</p>
                                 </div>
                                     <%--                            <div class="card-footer">--%>
@@ -145,13 +142,11 @@
     <!-- /.row -->
 </div>
 <!-- /.container -->
-
 <!-- Footer -->
 <!--<footer class="py-5 bg-success foot">-->
 <!--    <div class="container">-->
 <!--        <p class="m-0 text-center text-white">Copyright 2020</p>-->
 <!--    </div>-->
-
 <footer class="w3-container w3-padding-64 w3-center  py-1 bg-success foot">
     <div class="w3-xlarge w3-padding-32">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -170,7 +165,5 @@
 <%--<script src="vendor/jquery/jquery.min.js"></script>--%>
 <script src="${contextPath}vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <%--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
-
 </body>
-
 </html>
