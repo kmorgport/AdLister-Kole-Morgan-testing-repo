@@ -65,7 +65,7 @@
                                 <p class="text-light mb-1">Crop Lister Member</p>
 <%--                                <p class="text-light font-size-sm">The Alamo, San Antonio, TX</p>--%>
                                 <!--<button class="btn btn-primary">Follow</button>-->
-                                <button class="btn btn-outline-light">Post</button>
+                                <a href="/create"><button class="btn btn-outline-light">Post</button></a>
                             </div>
                         </div>
                     </div>
