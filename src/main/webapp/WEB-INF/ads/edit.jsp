@@ -69,7 +69,7 @@
 
             <div class="wrap-input1 validate-input" data-validate="Price is required">
                 <input class="input1" type="text" name="price" placeholder=<c:out value="${ad.getPrice()}"/>>
-                <span class="shadow-input1"></span>
+<%--                <span class="shadow-input1"></span>--%>
             </div>
 
             <div class="wrap-input1 validate-input" data-validate="Post is required">

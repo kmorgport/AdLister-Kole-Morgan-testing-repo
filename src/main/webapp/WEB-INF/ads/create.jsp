@@ -48,6 +48,16 @@
     </div>
 
     <form class="contact1-form validate-form" action="/create" method="POST">
+      <c:if test="${error != null}">
+        <div class="alert alert-danger" role="alert">
+          Error: ${error}
+        </div>
+      </c:if>
+      <c:if test="${errordouble != null}">
+        <div class="alert alert-danger" role="alert">
+          Error: ${errordouble}
+        </div>
+      </c:if>
 				<span class="contact1-form-title">
 					Create Post
 				</span>
