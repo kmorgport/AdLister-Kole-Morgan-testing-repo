@@ -23,4 +23,13 @@ public class SearchServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
         session.removeAttribute("search");
     }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String search = request.getParameter("search");
+        HttpSession session = request.getSession();
+        session.removeAttribute("search");
+        session.setAttribute("search",search);
+        request.setAttribute("search",search);
+        response.sendRedirect("/search");
+    }
 }

@@ -29,16 +29,14 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-secondary my-2 my-sm-0 text-white"           type="submit">Search</button>
+        <form action="/search" method="POST" class="form-inline">
+            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+            <a class="nav-link" href="/search"><button class="btn btn-outline-secondary my-2 my-sm-0 text-white" type="submit">Search</button></a>
         </form>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/landing">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="/landing">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>

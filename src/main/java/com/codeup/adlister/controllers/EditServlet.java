@@ -57,6 +57,10 @@ public class EditServlet extends HttpServlet {
             session.setAttribute("error", "Please select at least one category.");
             Ad ad = DaoFactory.getAdsDao().getAdsByAdId(adId);
             request.setAttribute("ad", ad);
+            DecimalFormat df = new DecimalFormat("0.00");
+            double price = ad.getPrice();
+            String priceFormat = df.format(price);
+            request.setAttribute("price", priceFormat);
             int [] categories = DaoFactory.getCategoriesDao().getAdCategories(adId);
             request.setAttribute("categories", categories);
             request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);

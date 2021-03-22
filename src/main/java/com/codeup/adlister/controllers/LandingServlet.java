@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.DecimalFormat;
 @WebServlet(name = "com.codeup.adlister.controllers.LandingServlet", urlPatterns = "/landing")
@@ -18,5 +19,14 @@ public class LandingServlet extends HttpServlet {
         DecimalFormat df = new DecimalFormat("0.00");
         request.setAttribute("df", df);
         request.getRequestDispatcher("/WEB-INF/ads/landing.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String search = request.getParameter("search");
+        HttpSession session = request.getSession();
+        session.removeAttribute("search");
+        session.setAttribute("search",search);
+        request.setAttribute("search",search);
+        response.sendRedirect("/search");
     }
 }
