@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
+    <jsp:include page="/WEB-INF/partials/loginPartial.jsp">
+        <jsp:param name="title" value="Please Log In" />
+    </jsp:include>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- Bootstrap core CSS -->
     <link href="${contextPath}/vendor/bootstrap/login-css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +40,9 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/landing">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
