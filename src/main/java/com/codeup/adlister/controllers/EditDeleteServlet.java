@@ -24,6 +24,8 @@ public class EditDeleteServlet extends HttpServlet {
 
         long adId = Long.parseLong(request.getParameter("adId"));
         Ad ad = DaoFactory.getAdsDao().getAdsByAdId(adId);
+        User userObj = DaoFactory.getUsersDao().getUserByAd(adId);
+        request.setAttribute("user", userObj);
         request.setAttribute("ad", ad);
         request.getRequestDispatcher("/WEB-INF/ads/edit-delete.jsp").forward(request, response);
     }
