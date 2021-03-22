@@ -42,7 +42,7 @@
                     <a class="nav-link" href="/landing">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
+                    <a class="nav-link" href="/edit-profile">Edit Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
