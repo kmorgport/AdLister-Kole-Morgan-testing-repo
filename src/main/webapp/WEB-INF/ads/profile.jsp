@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- Bootstrap core CSS -->
     <link href="${contextPath}/vendor/bootstrap/login-css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
 </head>
 <body>
@@ -63,7 +62,7 @@
                             <div class="mt-3">
                                 <h4><c:out value="${user.getUsername()}"/></h4>
                                 <p class="text-light mb-1">Crop Lister Member</p>
-<%--                                <p class="text-light font-size-sm">The Alamo, San Antonio, TX</p>--%>
+                                <%--                                <p class="text-light font-size-sm">The Alamo, San Antonio, TX</p>--%>
                                 <!--<button class="btn btn-primary">Follow</button>-->
                                 <a href="/create"><button class="btn btn-outline-light">Post</button></a>
                             </div>
@@ -79,7 +78,7 @@
                                 <h6 class="mb-0"><c:out value="${user.getUsername()}"/></h6>
                             </div>
                             <div class="col-sm-9 text-light">
-<%--                                Jim Adler-The Texas Hammer--%>
+                                <%--                                Jim Adler-The Texas Hammer--%>
                             </div>
                         </div>
                         <hr>
@@ -88,7 +87,7 @@
                                 <h6 class="mb-0"><c:out value="${user.getEmail()}"/></h6>
                             </div>
                             <div class="col-sm-9 text-light">
-<%--                                EatYoGreens@mail.ru--%>
+                                <%--                                EatYoGreens@mail.ru--%>
                             </div>
                         </div>
                         <hr>
@@ -98,35 +97,35 @@
                 <!--CARDS-->
                 <div class="row gutters-sm">
                     <c:forEach var="ad" items="${ads}">
-                    <div class="col-sm-6 mb-3">
-                        <div class="card h-100 post">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/edit-delete?adId=${ad.getId()}">${ad.getTitle()}</a>
-                                </h4>
-                                <h5>${ad.getPrice()}</h5>
-                                <p class="card-text">${ad.getDescription()}</p>
-                            </div>
-                            <div class="card-footer">
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100 post">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="/edit-delete?adId=${ad.getId()}">${ad.getTitle()}</a>
+                                    </h4>
+                                    <h5>$${df.format(ad.getPrice())}</h5>
+                                    <p class="card-text">${ad.getDescription()}</p>
+                                </div>
+                                <div class="card-footer">
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </c:forEach>
                     <!--NEXT CARD-->
-<%--                    <div class="col-sm-6 mb-3">--%>
-<%--                        <div class="card h-100 post">--%>
-<%--                            <div class="card-body">--%>
-<%--                                <h4 class="card-title">--%>
-<%--                                    <a href="#">Item One</a>--%>
-<%--                                </h4>--%>
-<%--                                <h5>$24.99</h5>--%>
-<%--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing                                elit. Amet numquam aspernatur!</p>--%>
-<%--                            </div>--%>
-<%--                            <div class="card-footer">--%>
-<%--                                <input class="inp" type="button" value="View Post" onclick="location                                    .href='AdminPage.jsp';" />--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="col-sm-6 mb-3">--%>
+                    <%--                        <div class="card h-100 post">--%>
+                    <%--                            <div class="card-body">--%>
+                    <%--                                <h4 class="card-title">--%>
+                    <%--                                    <a href="#">Item One</a>--%>
+                    <%--                                </h4>--%>
+                    <%--                                <h5>$24.99</h5>--%>
+                    <%--                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing                                elit. Amet numquam aspernatur!</p>--%>
+                    <%--                            </div>--%>
+                    <%--                            <div class="card-footer">--%>
+                    <%--                                <input class="inp" type="button" value="View Post" onclick="location                                    .href='AdminPage.jsp';" />--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
         </div>

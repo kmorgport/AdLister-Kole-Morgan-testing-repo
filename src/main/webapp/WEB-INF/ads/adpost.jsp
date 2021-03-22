@@ -48,50 +48,42 @@
         </div>
     </div>
 </nav>
-
 <div id="container">
-    <!-- Start	Product details -->
+    <!-- Start Product details -->
     <div class="product-details">
-        <!-- 	Product Name -->
+        <!--   Product Name -->
         <h1><c:out value="${ad.getTitle()}"/></h1>
-        <!-- 		<span class="hint new">New</span> -->
-        <!-- 		<span class="hint free-shipping">Free Shipping</span> -->
-        <!-- 		the Product rating -->
+        <!--      <span class="hint new">New</span> -->
+        <!--      <span class="hint free-shipping">Free Shipping</span> -->
+        <!--      the Product rating -->
         <span class="hint-star star">
-		<i class="fa fa-star" aria-hidden="true"></i>
-		<i class="fa fa-star" aria-hidden="true"></i>
-		<i class="fa fa-star" aria-hidden="true"></i>
-		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-		<i class="fa fa-star-o" aria-hidden="true"></i>
-	</span>
-
-
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star-half-o" aria-hidden="true"></i>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+   </span>
         <!-- The most important information about the product -->
         <p class="information"><c:out value="${ad.getDescription()}"/></p>
-
-
-        <!-- 		Control -->
+        <!--      Control -->
         <div class="control">
-
             <!-- Start Button buying -->
             <button class="btn-email">
-                <!-- 		the Price -->
-                <span class="price"><c:out value="${ad.getPrice()}"/></span>
-                <!-- 		shopping cart icon-->
+                <!--      the Price -->
+                <span class="price"><c:out value="$${price}"/></span>
+                <!--      shopping cart icon-->
                 <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                <!-- 		Buy Now / ADD to Cart-->
+                <!--      Buy Now / ADD to Cart-->
                 <span class="buy"><c:out value="${user.getEmail()}"/></span>
             </button>
             <!-- End Button buying -->
-
         </div>
-
     </div>
-    <!-- 	End	Product details   -->
-    <!-- 	Start product image & Information -->
+    <!--   End    Product details   -->
+    <!--   Start product image & Information -->
     <!--    <div class="product-image">-->
     <!--        <img src="vendor/Cheese_Bowl.png" alt="Cheese">-->
-    <!--        &lt;!&ndash; 	product Information&ndash;&gt;-->
+    <!--        &lt;!&ndash;   product Information&ndash;&gt;-->
     <!--        <div class="info">-->
     <!--            <h2>The Description</h2>-->
     <!--            <ul>-->
@@ -102,7 +94,6 @@
     <!--        </div>-->
     <!--    </div>-->
     <!--  End product image  -->
-
 </div>
 </body>
 </html>
