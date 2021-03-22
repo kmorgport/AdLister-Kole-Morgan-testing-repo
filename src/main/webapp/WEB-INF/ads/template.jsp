@@ -1,93 +1,113 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: Classroom
-  Date: 3/18/21
-  Time: 4:33 PM
+  User: ionbenz
+  Date: 3/16/21
+  Time: 15:14
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html>
 <head>
-
+    <title>$Title$</title>
 </head>
 <body>
-
-<div id="container">
-    <link href="post.css" rel="stylesheet">
-
-
-    <!-- Start	Product details -->
-    <div class="product-details">
-
-        <!-- 	Product Name -->
-        <%--        <h1>Mammoth Cheese</h1>--%>
-        <h1><c:out value="${ad.getTitle()}"/></h1>
-        <!-- 		<span class="hint new">New</span> -->
-        <!-- 		<span class="hint free-shipping">Free Shipping</span> -->
-        <!-- 		the Product rating -->
-        <span class="hint-star star">
-		<i class="fa fa-star" aria-hidden="true"></i>
-		<i class="fa fa-star" aria-hidden="true"></i>
-		<i class="fa fa-star" aria-hidden="true"></i>
-		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-		<i class="fa fa-star-o" aria-hidden="true"></i>
-	</span>
-
-
-        <!-- The most important information about the product -->
-        <%--        <p class="information">"In some camps, mammoth cheese sacks have a flap of hide stitched over them, which--%>
-        <%--            prevents the cheese from being harvested by the Dragonborn. Having the Green Thumb Alchemy perk allows for--%>
-        <%--            the collection of two bowls of mammoth cheese per sack."</p>--%>
-        <p class="information"><c:out value="${ad.getDescription()}"/></p>
-
-
-        <!-- 		Control -->
-        <div class="control">
-
-            <!-- Start Button buying -->
-            <button class="btn">
-                <!-- 		the Price -->
-                <%--                <span class="price">$49</span>--%>
-                <span class="price"><c:out value="${ad.getPrice()}"/></span>
-                <!-- 		shopping cart icon-->
-                <!-- 		Buy Now / ADD to Cart-->
-                <%--                <c:forEach var="user" items="${users}">--%>
-
-                <%--                <span class="buy">${user.getEmail()}</span>--%>
-                <%--                </c:forEach>--%>
-            </button>
-            <!-- End Button buying -->
-
+<form action="/edit" method="POST">
+    <c:if test="${error != null}">
+        <div class="alert alert-danger" role="alert">
+            Error: ${error}
         </div>
-
-    </div>
-
-    <!-- 	End	Product details   -->
-
-    <form action="/delete" method="POST">
-        <label for="delete">Clicking this button will delete this ad. Warning: If you delete your ad, it can't be undone!</label>
-        <input type="submit" id="delete" value="Delete this ad" />
-    </form>
-    <!-- 	Start product image & Information -->
-
-    <div class="product-image">
-
-        <%--        <img src="IdeaProjects/AdLister-Kole-Morgan-testing-repo/src/main/webapp/img/Cheese_Bowl.png" alt="Cheese">--%>
-
-        <!-- 	product Information-->
-        <div class="info">
-            <h2>The Description</h2>
-            <ul>
-                <li><strong>Flavor: </strong>Strong FLAVOR</li>
-                <li><strong>Refrigeration: </strong>Yes</li>
-                <li><strong>Date Harvested: </strong>12/02/2019</li>
-            </ul>
+    </c:if>
+    <c:if test="${errordouble != null}">
+        <div class="alert alert-danger" role="alert">
+            Error: ${errordouble}
         </div>
+    </c:if>
+    <div class="form-label-group">
+        <input type="text" id="title" name="title" class="form-control" placeholder="Title" required>
+        <label for="title">Your previous Title: <c:out value="${ad.getTitle()}"/></label>
     </div>
-    <!--  End product image  -->
-
-
-</div>
+    <div class="form-label-group">
+        <input type="text" id="price" name="price" class="form-control" placeholder="Price" required>
+        <label for="price">Your previous Price: <c:out value="${ad.getPrice()}"/></label>
+    </div>
+    <div class="custom-control custom-checkbox mb-3">
+        <c:choose>
+            <c:when test="${categories[0] == 1}">
+                <input type="checkbox" name="categories" id="fruit" value="1" checked>
+                <label for="fruit">Fruit</label>
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name="categories" id="fruit" value="1">
+                <label for="fruit">Fruit</label>
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${categories[1] == 1}">
+                <input type="checkbox" name="categories" id="vegetables" value="2" checked>
+                <label for="vegetables">Vegetables</label>
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name="categories" id="vegetables" value="2">
+                <label for="vegetables">Vegetables</label>
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${categories[2] == 1}">
+                <input type="checkbox" name="categories" id="dairy" value="3" checked>
+                <label for="dairy">Dairy</label>
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name="categories" id="dairy" value="3">
+                <label for="dairy">Dairy</label>
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${categories[3] == 1}">
+                <input type="checkbox" name="categories" id="baked_goods" value="4" checked>
+                <label for="baked_goods">Bread</label>
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name="categories" id="baked_goods" value="4">
+                <label for="baked_goods">Bread</label>
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${categories[4] == 1}">
+                <input type="checkbox" name="categories" id="jams" value="5" checked>
+                <label for="jams">Jams</label>
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name="categories" id="jams" value="5">
+                <label for="jams">Jams</label>
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${categories[5] == 1}">
+                <input type="checkbox" name="categories" id="ferments" value="6" checked>
+                <label for="ferments">Ferments</label>
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name="categories" id="ferments" value="6">
+                <label for="ferments">Ferments</label>
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${categories[6] == 1}">
+                <input type="checkbox" name="categories" id="other" value="7" checked>
+                <label for="other">Other</label>
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name="categories" id="other" value="7">
+                <label for="other">Other</label>
+            </c:otherwise>
+        </c:choose>
+    </div>
+    <div class="form-label-group">
+        <label for="description">Description: </label>
+        <textarea rows="3" cols="30" name="description" id="description"><c:out value="${ad.getDescription()}"/></textarea>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Edit</button>
+</form>
 </body>
 </html>
