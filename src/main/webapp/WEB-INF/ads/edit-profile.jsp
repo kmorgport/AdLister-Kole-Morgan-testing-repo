@@ -59,21 +59,20 @@
                 </div>
             </c:if>
             <span class="contact1-form-title">
-					Edit Profile
-				</span>
+               Edit Profile
+            </span>
             <div class="wrap-input1 validate-input" data-validate="Username is required">
                 <input class="input1" type="text" name="title" placeholder=<c:out value="${user.getUsername()}"/>>
                 <span class="shadow-input1"></span>
             </div>
             <div class="wrap-input1 validate-input" data-validate="Email is required">
                 <input class="input1" type="text" name="price" placeholder=<c:out value="${user.getEmail()}"/>>
-                                <span class="shadow-input1"></span>
+                <span class="shadow-input1"></span>
             </div>
             <div class="wrap-input1 validate-input" data-validate="Password is required">
-                <input class="input1" type="password" name="price" placeholder=<c:out value="${user.getPassword()}"/>>
-                                <span class="shadow-input1"></span>
+                <input class="input1" type="password" name="price" placeholder=<c:out value="Password"/>>
+                <span class="shadow-input1"></span>
             </div>
-
             <!--                        </div>-->
             <!--                    </div>-->
             <!--                </div>-->
@@ -81,19 +80,19 @@
             <br><br>
             <div class="container-contact1-form-btn">
                 <button class="contact1-form-btn" type="submit">
-						<span>
-							Post
-							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-						</span>
+                  <span>
+                     Post
+                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                  </span>
                 </button>
             </div>
             <br>
             <div class="container-contact1-form-btn">
                 <button class="contact1-form-btn" type="reset">
-						<span>
-							Cancel
-							<i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-						</span>
+                  <span>
+                     Cancel
+                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                  </span>
                 </button>
             </div>
         </form>

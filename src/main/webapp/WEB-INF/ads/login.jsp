@@ -65,6 +65,11 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4">Welcome back!</h3>
               <form action="/login" method="POST">
+                <c:if test="${error != null}">
+                  <div class="alert alert-danger" role="alert">
+                    Error: ${error}
+                  </div>
+                </c:if>
                 <div class="form-label-group">
                   <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required autofocus>
                   <label for="inputEmail"></label>
